@@ -73,4 +73,11 @@ def logoutUser(request):
 @allowed_users(allowed_roles=['client'])
 def userPage(request):
     context = {}
-    return render(request, 'user.htm')
+    return render(request, 'user.htm', context)
+
+
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['client'])
+def accountSettings(request):
+    context = {}
+    return render(request, 'account_set.htm', context)

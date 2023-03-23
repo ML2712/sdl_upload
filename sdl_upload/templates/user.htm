@@ -2,4 +2,8 @@
 
 {% block content %}
 <h3>User Profile</h3>
+
+<!-- <img src="{{request.user.client.profile_pic.url}}" alt=""> -->
+<p>{{request.user.client.name}}</p>
+
 {% endblock content %}

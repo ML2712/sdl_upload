@@ -10,10 +10,16 @@
 
 <body>
     {% block nav %}
+    {% if request.user.is_staff %}
     <nav>
         <span>Hello .{{request.user}}</span>
         <span><a href="{% url 'logout' %}">Logout</a></span>
     </nav>
+    {% else %}
+    <li>
+        <a href="{% url 'account' %}">settings</a>
+    </li>
+    {% endif %}
     {% endblock nav %}
 
     {% block content %}
