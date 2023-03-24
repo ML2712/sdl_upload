@@ -1,35 +1,79 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    {% if title %}
+    <title>{{title}}</title>
+    {% else %}
+    <title>Work Easy | SDL</title>
+    {% endif %}
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            /* background-color: #7abecc !important; */
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-evenly;
+            padding: 3%;
+            font-family: 'Poppins', sans-serif;
+            text-transform: capitalize;
+            /* color: #f8f8ff; */
+        }
+
+        nav a {
+            color: #4f4fd6;
+        }
+
+        h1,
+        h3 {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            /* color: #f8f8ff; */
+            font-size: 24px;
+            letter-spacing: 0.07rem;
+        }
+
+        a {
+            display: flex;
+            color: #4f4fd6;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
 </head>
 
 <body>
     {% block nav %}
     {% if request.user.is_staff %}
     <nav>
-        <span>Hello .{{request.user}}</span>
-        <span><a href="{% url 'logout' %}">Logout</a></span>
+        <li>
+            <span>Hello, {{request.user}} (Admin)</span>
+        </li>
+        <li>
+            <span><a href="{% url 'logout' %}">Logout</a></span>
+        </li>
     </nav>
     {% else %}
-    <li>
-        <a href="{% url 'account' %}">settings</a>
-    </li>
+    <!-- <li>
+        <a href="{% url 'user-page' %}">settings</a>
+    </li> -->
     {% endif %}
     {% endblock nav %}
 
     {% block content %}
-    <h1>Homepage</h1>
+    <h1>Admin Dashboard</h1>
     <section>
-        <!-- <form action="" method="POST">
-            {% csrf_token %}
-            {{form.as_p}}
-            <input type="submit" value="Upload">
-        </form> -->
     </section>
     {% endblock content %}
 </body>

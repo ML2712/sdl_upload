@@ -1,9 +1,14 @@
 {% extends 'home.htm' %}
 
 {% block content %}
+
+<nav>
+    <li>Hello, {{request.user.client.name}}</li>
+    <li><a href="{% url 'logout' %}">logout</a></li>
+</nav>
+
 <h3>User Profile</h3>
 
-<!-- <img src="{{request.user.client.profile_pic.url}}" alt=""> -->
-<p>{{request.user.client.name}}</p>
+<a href="{{request.user.client.profile_document.url}}" download>View Document</a>
 
 {% endblock content %}
